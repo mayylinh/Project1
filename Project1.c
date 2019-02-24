@@ -1,15 +1,15 @@
 // Project 1: Chapter 7 - #20 Theater Seating
 /* Write a program that can be used by a small theater to sell tickets for performances.
-• When the program begins, it should ask the user to enter the seat prices for each row.
+â€¢ When the program begins, it should ask the user to enter the seat prices for each row.
 The prices can be stored in a separate array. (Alternatively, the prices may be read
 from a file.)
-• Once the prices are entered, the program should display a seating chart. The user may
+â€¢ Once the prices are entered, the program should display a seating chart. The user may
 enter the row and seat numbers for tickets being sold. Every time a ticket or group of
 tickets is purchased, the program should display the total ticket prices and update the
 seating chart.
-• The program should keep a total of all ticket sales. The user should be given an
+â€¢ The program should keep a total of all ticket sales. The user should be given an
 option of viewing this amount.
-• The program should also give the user an option to see a list of how many seats
+â€¢ The program should also give the user an option to see a list of how many seats
 have been sold, how many seats are available in each row, and how many seats are
 available in the entire auditorium.
 Input Validation: When tickets are being sold, do not accept row or seat numbers that
@@ -22,7 +22,6 @@ that seat is available before it is sold. */
 void ticketSales();
 void availableSeats();
 void setSeat();
-void takenSeats();
 void printChart();
 void quit();
 
@@ -161,31 +160,12 @@ void availableSeats()
 
 void setSeat(int positions[][2], int tickets)
 {
-	char newSaleChart[15][30];
-
 	for (int row = 0; row < 15; row++)
 	{
 		for (int seat = 0; seat < 30; seat++)
 		{
-			newSaleChart[row][seat] = '#';
 			for (int ticket = 0; ticket < tickets; ticket++)
-				newSaleChart[positions[ticket][0]][positions[ticket][1]] = '*';
-		}
-	}
-	takenSeats(newSaleChart);
-}
-
-void takenSeats(char newSaleChart[15][30])
-{
-	char toUpdate[15][30];
-
-	for (int row = 0; row < 15; row++)
-	{
-		for (int seat = 0; seat < 30; seat++)
-		{
-			toUpdate[row][seat] = '#';
-			if (toUpdate[row][seat] != newSaleChart[row][seat])
-				chart[row][seat] = '*';
+				chart[positions[ticket][0]][positions[ticket][1]] = '*';
 		}
 	}
 }
